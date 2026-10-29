@@ -1,0 +1,46 @@
+module.exports = (sequelize, DataTypes) => {
+  const Product = sequelize.define(
+    "Product",
+    {
+      Id:              { type: DataTypes.INTEGER(10),   primaryKey: true, autoIncrement: true, allowNull: false },
+      name:            { type: DataTypes.STRING,        allowNull: false, validate: { notEmpty: true } },
+      slug:            { type: DataTypes.STRING,        allowNull: true },
+      sku:             { type: DataTypes.STRING,        allowNull: true },
+      categoryId:      { type: DataTypes.INTEGER(10),   allowNull: true },
+      subcategoryId:   { type: DataTypes.INTEGER(10),   allowNull: true, field: "subCategoryId" },
+      childcategoryId: { type: DataTypes.INTEGER(10),   allowNull: true },
+      brandId:         { type: DataTypes.INTEGER(10),   allowNull: true },
+      productVideo:    { type: DataTypes.STRING(500),   allowNull: true },
+      advanceAmount:   { type: DataTypes.DECIMAL(12,2), allowNull: true },
+      stockAlert:      { type: DataTypes.INTEGER(10),   allowNull: true },
+      rackNo:          { type: DataTypes.STRING(64),    allowNull: true },
+      description:     { type: DataTypes.TEXT,          allowNull: true },
+      shortDescription:{ type: DataTypes.TEXT,          allowNull: true },
+      metaTitle:       { type: DataTypes.STRING(500),   allowNull: true },
+      metaKeyword:     { type: DataTypes.STRING(500),   allowNull: true },
+      metaDescription: { type: DataTypes.TEXT,          allowNull: true },
+      giftTitle:       { type: DataTypes.STRING(500),   allowNull: true },
+      giftPrice:       { type: DataTypes.DECIMAL(12,2), allowNull: true },
+      giftImage:       { type: DataTypes.STRING(500),   allowNull: true },
+      images:          { type: DataTypes.JSON,          allowNull: true },
+      file:            { type: DataTypes.STRING(500),   allowNull: true },
+      gallery:         { type: DataTypes.JSON,          allowNull: true },
+      features:        { type: DataTypes.JSON,          allowNull: true },
+      bestDeals:       { type: DataTypes.BOOLEAN,       allowNull: true, defaultValue: false },
+      freeShipping:    { type: DataTypes.BOOLEAN,       allowNull: true, defaultValue: false },
+      flashSale:       { type: DataTypes.BOOLEAN,       allowNull: true, defaultValue: false },
+      stockId:         { type: DataTypes.INTEGER(10),   allowNull: true },
+      date:            { type: DataTypes.DATEONLY,      allowNull: true },
+      note:            { type: DataTypes.STRING,        allowNull: true },
+      status:          { type: DataTypes.STRING(32),    allowNull: true, defaultValue: "Active" },
+      deletedAt:       { type: DataTypes.DATE,          allowNull: true },
+    },
+    {
+      timestamps: true,
+      paranoid: true,
+      tableName: "Products",
+    },
+  );
+
+  return Product;
+};

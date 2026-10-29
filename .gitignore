@@ -1,0 +1,8 @@
+/node_modules
+.env
+.DS_Store
+
+Archive.zip
+Archive/
+scripts/
+inline-images-backup-*.json

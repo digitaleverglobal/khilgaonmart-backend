@@ -1,0 +1,13 @@
+const router = require("express").Router();
+const auth = require("../../middlewares/auth");
+const C = require("./expense.controller");
+router.use(auth());
+router.get("/categories", C.listCategories);
+router.post("/categories", C.createCategory);
+router.put("/categories/:id", C.updateCategory);
+router.delete("/categories/:id", C.deleteCategory);
+router.get("/", C.listExpenses);
+router.post("/", C.createExpense);
+router.put("/:id", C.updateExpense);
+router.delete("/:id", C.deleteExpense);
+module.exports = router;
