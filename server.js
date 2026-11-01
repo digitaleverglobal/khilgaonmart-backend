@@ -31,10 +31,11 @@ const courierSyncWorker = createCourierSyncWorker({
 });
 const erpSyncWorker =
   require("./app/modules/order/erpSync").createErpSyncWorker();
-const rewardWorker = require("./app/modules/reward/reward.worker").createRewardWorker({
-  ready: db.ready,
-  service: require("./app/modules/reward/reward.service"),
-});
+const rewardWorker =
+  require("./app/modules/reward/reward.worker").createRewardWorker({
+    ready: db.ready,
+    service: require("./app/modules/reward/reward.service"),
+  });
 
 const app = express();
 const server = http.createServer(app);
